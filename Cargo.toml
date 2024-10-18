@@ -1,6 +1,6 @@
 [package]
 name = "rimplog"
-version = "0.0.3"
+version = "0.0.4"
 edition = "2021"
 authors = ["ChisatoNishikigi73 <ChisatoNishikigi73@gmail.com>"]
 description = "A simple, colorful, and easy-to-use logging library for Rust"

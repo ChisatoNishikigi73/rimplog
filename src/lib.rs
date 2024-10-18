@@ -1,10 +1,10 @@
+extern crate log;
 use env_logger::{Builder, Env};
 use std::io::Write;
 use chrono::Local;
 use colored::*;
 use std::path::Path;
 use std::thread;
-pub use log::{Level, LevelFilter};
 
 /// Logger builder
 /// 

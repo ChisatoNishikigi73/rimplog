@@ -1,4 +1,4 @@
-extern crate log;
+pub extern crate log;
 use env_logger::{Builder, Env};
 use std::io::Write;
 use chrono::Local;

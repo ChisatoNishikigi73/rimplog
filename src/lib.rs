@@ -176,35 +176,35 @@ fn get_project_relative_path(file_path: &str, depth: usize) -> String {
 #[macro_export]
 macro_rules! log_info {
     ($($arg:tt)*) => ({
-        log::info!(target: module_path!(), "{}\n", format_args!($($arg)*));
+        $crate::log::info!(target: module_path!(), "{}\n", format_args!($($arg)*));
     })
 }
 
 #[macro_export]
 macro_rules! log_error {
     ($($arg:tt)*) => ({
-        log::error!(target: module_path!(), "{}\n", format_args!($($arg)*));
+        $crate::log::error!(target: module_path!(), "{}\n", format_args!($($arg)*));
     })
 }
 
 #[macro_export]
 macro_rules! log_warn {
     ($($arg:tt)*) => ({
-        log::warn!(target: module_path!(), "{}\n", format_args!($($arg)*));
+        $crate::log::warn!(target: module_path!(), "{}\n", format_args!($($arg)*));
     })
 }
 
 #[macro_export]
 macro_rules! log_debug {
     ($($arg:tt)*) => ({
-        log::debug!(target: module_path!(), "{}\n", format_args!($($arg)*));
+        $crate::log::debug!(target: module_path!(), "{}\n", format_args!($($arg)*));
     })
 }
 
 #[macro_export]
 macro_rules! log_trace {
     ($($arg:tt)*) => ({
-        log::trace!(target: module_path!(), "{}\n", format_args!($($arg)*));
+        $crate::log::trace!(target: module_path!(), "{}\n", format_args!($($arg)*));
     })
 }
 
@@ -212,35 +212,35 @@ macro_rules! log_trace {
 #[macro_export]
 macro_rules! _log_info {
     ($($arg:tt)*) => ({
-        log::info!(target: module_path!(), "{}", format_args!($($arg)*));
+        $crate::log::info!(target: module_path!(), "{}", format_args!($($arg)*));
     })
 }
 
 #[macro_export]
 macro_rules! _log_error {
     ($($arg:tt)*) => ({
-        log::error!(target: module_path!(), "{}", format_args!($($arg)*));
+        $crate::log::error!(target: module_path!(), "{}", format_args!($($arg)*));
     })
 }
 
 #[macro_export]
 macro_rules! _log_warn {
     ($($arg:tt)*) => ({
-        log::warn!(target: module_path!(), "{}", format_args!($($arg)*));
+        $crate::log::warn!(target: module_path!(), "{}", format_args!($($arg)*));
     })
 }
 
 #[macro_export]
 macro_rules! _log_debug {
     ($($arg:tt)*) => ({
-        log::debug!(target: module_path!(), "{}", format_args!($($arg)*));
+        $crate::log::debug!(target: module_path!(), "{}", format_args!($($arg)*));
     })
 }
 
 #[macro_export]
 macro_rules! _log_trace {
     ($($arg:tt)*) => ({
-        log::trace!(target: module_path!(), "{}", format_args!($($arg)*));
+        $crate::log::trace!(target: module_path!(), "{}", format_args!($($arg)*));
     })
 }
 
@@ -255,5 +255,3 @@ pub use _log_error as _error;
 pub use _log_warn as _warn;
 pub use _log_debug as _debug;
 pub use _log_trace as _trace;
-
-pub use log::{log, logger};

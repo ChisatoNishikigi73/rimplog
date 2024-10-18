@@ -1,11 +1,10 @@
 use env_logger::{Builder, Env};
-use log::LevelFilter;
 use std::io::Write;
 use chrono::Local;
 use colored::*;
 use std::path::Path;
 use std::thread;
-
+pub use log;
 
 /// Logger builder
 /// 
@@ -125,17 +124,17 @@ pub fn init_logger(logger_builder: LoggerBuilder) {
     });
 
     // Parse the log level and handle any errors
-    let parsed_level = level.parse::<LevelFilter>().unwrap_or_else(|_| {
+    let parsed_level = level.parse::<log::LevelFilter>().unwrap_or_else(|_| {
         eprintln!(
             "Invalid log level '{}', using default level Info",
             level
         );
-        LevelFilter::Info
+        log::LevelFilter::Info
     });
 
     if only_project_logs {
         builder
-            .filter(None, LevelFilter::Off)
+            .filter(None, log::LevelFilter::Off)
             .filter(Some(project_name), parsed_level);
     } else {
         builder.filter(None, parsed_level);

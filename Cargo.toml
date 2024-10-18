@@ -1,6 +1,6 @@
 [package]
 name = "rimplog"
-version = "0.0.2"
+version = "0.0.2-patch.1"
 edition = "2021"
 authors = ["ChisatoNishikigi73 <ChisatoNishikigi73@gmail.com>"]
 description = "A simple, colorful, and easy-to-use logging library for Rust"
@@ -14,6 +14,5 @@ categories = ["development-tools::debugging"]
 [dependencies]
 colored = "2.1.0"
 env_logger = "0.11.5"
-log = "0.4.22"
 chrono = "0.4.38"
-
+log = "0.4.22"

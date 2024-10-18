@@ -4,7 +4,7 @@ use chrono::Local;
 use colored::*;
 use std::path::Path;
 use std::thread;
-pub use log;
+pub use log::{Level, LevelFilter};
 
 /// Logger builder
 /// 
@@ -256,3 +256,4 @@ pub use _log_warn as _warn;
 pub use _log_debug as _debug;
 pub use _log_trace as _trace;
 
+pub use log::{log, logger};

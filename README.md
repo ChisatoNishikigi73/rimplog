@@ -16,7 +16,7 @@ To use rimplog in your project, add the following to your `Cargo.toml` file:
 
 ```toml
 [dependencies]
-rimplog = "0.0.1"
+rimplog = "0.0.3"
 ```
 
 ## Building the Logger

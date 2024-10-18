@@ -1,0 +1,19 @@
+[package]
+name = "rimplog"
+version = "0.0.1"
+edition = "2021"
+authors = ["ChisatoNishikigi73 <ChisatoNishikigi73@gmail.com>"]
+description = "A simple, colorful, and easy-to-use logging library for Rust"
+license = "MIT"
+repository = "https://github.com/ChisatoNishikigi73/rimplog"
+documentation = "https://github.com/ChisatoNishikigi73/rimplog/blob/master/README.md"
+readme = "README.md"
+keywords = [ "log", "logging", "logger", "utility", "colorful"]
+categories = ["development-tools::debugging"]
+
+[dependencies]
+colored = "2.1.0"
+env_logger = "0.11.5"
+log = "0.4.22"
+chrono = "0.4.38"
+

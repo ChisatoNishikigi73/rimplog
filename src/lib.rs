@@ -5,6 +5,8 @@ use chrono::Local;
 use colored::*;
 use std::path::Path;
 use std::thread;
+use std::env;
+use std::sync::Arc;
 
 /// Logger builder
 /// 
@@ -52,11 +54,12 @@ pub fn init_logger(logger_builder: LoggerBuilder) {
     let time_format = logger_builder.time_format;
     let preset = logger_builder.preset;
 
-    let project_name = env!("CARGO_PKG_NAME");
+    let project_name = Arc::new(env::var("CARGO_PKG_NAME").unwrap_or_else(|_| "unknown".to_string()));
 
     let env = Env::default().filter_or("RUST_LOG", level.clone());
     let mut builder = Builder::from_env(env);
 
+    let project_name_clone = Arc::clone(&project_name);
     builder.format(move |buf, record| {
         let file_path = record.file().unwrap_or("unknown");
         let project_relative_path = get_project_relative_path(file_path, path_depth);
@@ -77,10 +80,10 @@ pub fn init_logger(logger_builder: LoggerBuilder) {
             thread_name.bright_blue()
         };
 
-        let project = if record.target().starts_with(project_name) {
+        let project = if record.target().starts_with(&*project_name_clone) {
             format!("{}",
                 project_relative_path.yellow())
-        }else {
+        } else {
             format!("[{}] {}",
                 record.target().yellow(), 
                 project_relative_path.yellow())
@@ -135,7 +138,7 @@ pub fn init_logger(logger_builder: LoggerBuilder) {
     if only_project_logs {
         builder
             .filter(None, log::LevelFilter::Off)
-            .filter(Some(project_name), parsed_level);
+            .filter(Some(&*project_name), parsed_level);
     } else {
         builder.filter(None, parsed_level);
     }
